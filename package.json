@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/krlmari/movies-explorer#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12"
   }
 }
