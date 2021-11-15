@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/krlmari/movies-explorer/issues"
   },
-  "homepage": "https://github.com/krlmari/movies-explorer#readme"
+  "homepage": "https://github.com/krlmari/movies-explorer#readme",
+  "dependencies": {
+    "mongoose": "^6.0.12"
+  }
 }
