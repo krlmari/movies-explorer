@@ -1,5 +1,8 @@
 const Movies = require("../models/movie");
 
+const NotFoundError = require("../errors/not-found-err");
+const NotOwnerIdError = require("../errors/auth-err");
+
 const getMovies = (req, res, next) => {
   Movies.find({})
     .then((movies) => {

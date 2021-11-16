@@ -2,6 +2,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
+const NotFoundError = require("../errors/not-found-err");
+const IncorrectError = require("../errors/incorrect-err");
+const AuthError = require("../errors/auth-err");
+
 const getUserId = (req, res, next) => {
   User.findById(req.params.userId)
     .then((user) => {

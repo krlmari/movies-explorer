@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const { errors } = require("celebrate");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
+const errorMain = require("./middlewares/errors");
 
 const auth = require("./middlewares/auth");
 
