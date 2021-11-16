@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 
 const { errors } = require("celebrate");
 
+const auth = require("./middlewares/auth");
+
 const users = require("./routes/users");
 const movies = require("./routes/movies");
 
@@ -17,6 +19,8 @@ mongoose.connect("mongodb://localhost:27017/bitfilmsdb", {
 
 app.post("/signin", login);
 app.post("/signup", createUser);
+
+app.use(auth);
 
 app.use("/", users);
 app.use("/", movies);
