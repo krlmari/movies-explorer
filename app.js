@@ -12,7 +12,9 @@ const movies = require("./routes/movies");
 
 const { createUser, login } = require("./controllers/users");
 
+const { PORT = 3000 } = process.env;
 const app = express();
+
 app.use(express.json());
 
 mongoose.connect("mongodb://localhost:27017/bitfilmsdb", {
@@ -45,4 +47,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
