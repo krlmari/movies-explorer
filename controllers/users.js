@@ -6,13 +6,15 @@ const NotFoundError = require("../errors/not-found-err");
 const IncorrectError = require("../errors/incorrect-err");
 const AuthError = require("../errors/auth-err");
 
-const getUserId = (req, res, next) => {
-  User.findById(req.params.userId)
+const getUser = (req, res, next) => {
+  User.findById(req.user._id)
     .then((user) => {
       if (!user) {
         throw new NotFoundError("Запрашиваемый пользователь не найден.");
       }
-      res.send({ data: user });
+
+      const data = { _id: user._id, email: user.email, name: user.name };
+      res.send(data);
     })
     .catch(next);
 };
@@ -67,7 +69,7 @@ const login = (req, res, next) => {
 };
 
 module.exports = {
-  getUserId,
+  getUser,
   updateUser,
   createUser,
   login,
