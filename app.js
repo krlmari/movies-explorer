@@ -14,8 +14,18 @@ const { createUser, login } = require("./controllers/users");
 
 const { PORT = 3000 } = process.env;
 const app = express();
+const rateLimit = require("express-rate-limit");
+
+app.use(helmet());
 
 app.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // за 15 минут
+  max: 100, // можно совершить максимум 100 запросов с одного IP
+});
+
+app.use(limiter);
 
 mongoose.connect("mongodb://localhost:27017/bitfilmsdb", {
   useNewUrlParser: true,
